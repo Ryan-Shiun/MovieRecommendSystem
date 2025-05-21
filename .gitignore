@@ -2,8 +2,7 @@
 /.classpath
 .project
 .settings/
-/target/
 /output/
 /jars/
-/*.log
+*.log
 *.csv
