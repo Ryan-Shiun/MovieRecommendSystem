@@ -15,5 +15,25 @@
         <artifactId>jackson-databind</artifactId>
         <version>2.17.0</version>
     </dependency>
+    <!-- CSV 匯出工具 -->
+    <dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-csv</artifactId>
+	    <version>1.10.0</version>
+  	</dependency>
+  	<!-- HikariCputil 連線工具 -->
+  	<dependency>
+	    <groupId>com.zaxxer</groupId>
+	    <artifactId>HikariCP</artifactId>
+	    <version>5.1.0</version>
+	</dependency>
+	<!-- SQL Server Driver 連線工具 -->
+	<dependency>
+	    <groupId>com.microsoft.sqlserver</groupId>
+	    <artifactId>mssql-jdbc</artifactId>
+	    <version>12.10.0.jre11</version>
+	</dependency>
   </dependencies>
+  
+  
 </project>

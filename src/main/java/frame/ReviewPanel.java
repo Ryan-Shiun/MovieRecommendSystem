@@ -297,7 +297,7 @@ public class ReviewPanel extends JPanel {
         int score = (Integer) ratingBox.getSelectedItem();
         String content = manageReviewField.getText().trim();
         if (currentUserId < 0 || title.isEmpty() || content.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "欄位沒寫是要我通靈嗎 (¬_¬) ");
+            JOptionPane.showMessageDialog(this, "你什麼都沒寫喔 (¬_¬) ");
             return;
         }
         try {
@@ -315,7 +315,7 @@ public class ReviewPanel extends JPanel {
     private void publishReview() {
         String title = manageMovieTitleField.getText().trim();
         if (currentUserId < 0 || title.isBlank() ) {
-        	JOptionPane.showMessageDialog(this, "沒給電影名字是要我通靈嗎 (¬_¬) ");
+        	JOptionPane.showMessageDialog(this, "給個電影名稱才能幫你發表 (¬_¬) ");
             return;
         }       
         try {
@@ -344,8 +344,6 @@ public class ReviewPanel extends JPanel {
             String order = (String) orderByCombo.getSelectedItem();
             currentQueryList = reviewService.findAllPublic(order);
             refreshQueryTable();
-        } catch (ReviewNotFoundException e) {
-            JOptionPane.showMessageDialog(this, "" + e.getMessage());
         } catch (DataAccessRuntimeException e1) {
         	JOptionPane.showMessageDialog(this, "", "", JOptionPane.ERROR_MESSAGE);
 		}
@@ -353,9 +351,6 @@ public class ReviewPanel extends JPanel {
     
     // sort public review
     private void refreshQueryTable() {
-    	if (currentQueryList.isEmpty() | currentQueryList.isEmpty()) {
-    		System.out.println("空的");
-    	}
         queryModel.setRowCount(0);
         for (MovieReview r: currentQueryList) {
             String userName = userService.getUserById(r.userId())
@@ -377,7 +372,7 @@ public class ReviewPanel extends JPanel {
         try {
         	String movieName = searchUserField.getText().trim();
         	if (movieName.isBlank()) {
-        		JOptionPane.showMessageDialog(this, "輸入個大名給我 (-_-)");
+        		JOptionPane.showMessageDialog(this, "至少給我個大名吧 (-_-)");
         		return;
         	}
             currentQueryList = reviewService.searchByName(movieName);
@@ -397,9 +392,10 @@ public class ReviewPanel extends JPanel {
 		try {
 			reviews = reviewService.findAllPrivate(currentUserId);
 	        for (MovieReview r : reviews) {
+	        	 String pop = String.format("%.0f", r.popularity());
 	            favoritesTableModel.addRow(new Object[]{
 	                r.title(),
-	                r.popularity(),
+	                pop,
 	                r.userRating(),
 	                r.comment()
 	            });

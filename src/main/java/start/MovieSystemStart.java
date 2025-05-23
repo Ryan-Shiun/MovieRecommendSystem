@@ -22,7 +22,7 @@ public class MovieSystemStart {
 
             // call API get data
             String json = HttpRequestUtil.get(apiPath);
-            System.out.println("TMDb 取得 JSON 資料");
+            System.out.println("TMDB 取得 JSON 資料");
 
             // JSON → List<MovieItem>
             List<MovieItem> movies = new TmdbParser().parseTrending(json);

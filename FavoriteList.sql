@@ -16,11 +16,6 @@ SELECT * FROM MovieReview
 
 TRUNCATE TABLE MovieReview;
 
-SELECT user_id, user_name, movie_id, title, popularity, vote_average, user_rating, comment, post_at, is_public 
- FROM MovieReview WHERE user_name = 'ryan' AND is_public = 1  ORDER BY post_at DESC
-
-
-
 --DROP TABLE MovieReview;
 
 -- 使用者外鍵約束：user_id 對應 AppUser
@@ -39,12 +34,6 @@ ADD CONSTRAINT FK_Review_Movie
 ALTER TABLE dbo.MovieReview
 ADD CONSTRAINT PK_MovieReview PRIMARY KEY (user_id, movie_id);
 
-ALTER TABLE dbo.MovieReview
-ADD is_public BIT NOT NULL
-    CONSTRAINT DF_MovieReview_IsPublic DEFAULT 1;
 
-UPDATE dbo.MovieReview
-SET is_public = CASE WHEN visibility = 'Y' THEN 1 ELSE 0 END;
 
-ALTER TABLE dbo.MovieReview
-DROP COLUMN visibility;
+

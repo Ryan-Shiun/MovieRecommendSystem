@@ -52,7 +52,7 @@ public class MovieSystemPanel extends JPanel {
         add(top, BorderLayout.NORTH);
 
         // JTable list
-        String[] columns = {"ID", "標題", "人氣", "評分"};
+        String[] columns = {"ID", "標題", "熱度", "綜合評分"};
         tableModel = new DefaultTableModel(columns, 0) {
 
 			private static final long serialVersionUID = 1L;

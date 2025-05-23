@@ -74,12 +74,7 @@ public class MovieReviewService {
 	public List<MovieReview> findAllPublic(String orderBy) {
 		
 		try {
-			var list = dao.findAllPublic(orderBy);
-			if (list.isEmpty()) {
-				throw new ReviewNotFoundException();
-			}
-			return list;
-			
+			return dao.findAllPublic(orderBy);			
 		} catch (SQLException e) {
 			throw new DataAccessRuntimeException("讀取評論時發生問題", e);
 		}
